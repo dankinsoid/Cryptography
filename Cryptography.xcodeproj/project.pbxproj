@@ -10,6 +10,9 @@
 		83CC4A0F20B174660087AD1E /* Cryptography.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83CC4A0520B174650087AD1E /* Cryptography.framework */; };
 		83CC4A1420B174660087AD1E /* CryptographyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CC4A1320B174660087AD1E /* CryptographyTests.swift */; };
 		83CC4A1620B174660087AD1E /* Cryptography.h in Headers */ = {isa = PBXBuildFile; fileRef = 83CC4A0820B174650087AD1E /* Cryptography.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		83CC4A2220B174830087AD1E /* Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CC4A1F20B174820087AD1E /* Additions.swift */; };
+		83CC4A2320B174830087AD1E /* HMAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CC4A2020B174830087AD1E /* HMAC.swift */; };
+		83CC4A2420B174830087AD1E /* SHA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CC4A2120B174830087AD1E /* SHA.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +32,9 @@
 		83CC4A0E20B174660087AD1E /* CryptographyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptographyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		83CC4A1320B174660087AD1E /* CryptographyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptographyTests.swift; sourceTree = "<group>"; };
 		83CC4A1520B174660087AD1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83CC4A1F20B174820087AD1E /* Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Additions.swift; sourceTree = "<group>"; };
+		83CC4A2020B174830087AD1E /* HMAC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMAC.swift; sourceTree = "<group>"; };
+		83CC4A2120B174830087AD1E /* SHA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHA.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +77,9 @@
 		83CC4A0720B174650087AD1E /* Cryptography */ = {
 			isa = PBXGroup;
 			children = (
+				83CC4A1F20B174820087AD1E /* Additions.swift */,
+				83CC4A2020B174830087AD1E /* HMAC.swift */,
+				83CC4A2120B174830087AD1E /* SHA.swift */,
 				83CC4A0820B174650087AD1E /* Cryptography.h */,
 				83CC4A0920B174660087AD1E /* Info.plist */,
 			);
@@ -148,6 +157,7 @@
 				TargetAttributes = {
 					83CC4A0420B174650087AD1E = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					83CC4A0D20B174660087AD1E = {
@@ -196,6 +206,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83CC4A2420B174830087AD1E /* SHA.swift in Sources */,
+				83CC4A2320B174830087AD1E /* HMAC.swift in Sources */,
+				83CC4A2220B174830087AD1E /* Additions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +346,7 @@
 		83CC4A1A20B174660087AD1E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -345,9 +359,11 @@
 				INFOPLIST_FILE = Cryptography/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_BUNDLE_IDENTIFIER = Voidilov.Cryptography;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -355,6 +371,7 @@
 		83CC4A1B20B174660087AD1E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -367,6 +384,7 @@
 				INFOPLIST_FILE = Cryptography/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_BUNDLE_IDENTIFIER = Voidilov.Cryptography;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -377,6 +395,7 @@
 		83CC4A1D20B174660087AD1E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 4733T56UZW;
@@ -391,6 +410,7 @@
 		83CC4A1E20B174660087AD1E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 4733T56UZW;
