@@ -17,13 +17,16 @@ extension FixedWidthInteger {
     @inline(__always) public static func >>>(_ lhs: Self, _ rhs: Int) -> Self {
         return (lhs >> rhs) + (lhs << (bitWidth - rhs))
     }
+    
     @inline(__always) public static func <<<(_ lhs: Self, _ rhs: Int) -> Self {
         return (lhs << rhs) + (lhs >> (bitWidth - rhs))
     }
+
     @inline(__always) public static func &>>>(_ lhs: Self, _ rhs: Int) -> Self {
         let r = rhs % bitWidth
         return (lhs >> r) + (lhs << (bitWidth - r))
     }
+    
     @inline(__always) public static func &<<<(_ lhs: Self, _ rhs: Int) -> Self {
         let r = rhs % bitWidth
         return (lhs << r) + (lhs >> (bitWidth - r))
