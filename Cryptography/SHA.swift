@@ -55,7 +55,7 @@ extension SHA {
         var m = Self.Word.represent(msg + [128])
         let mod = m.count % 16
         let const = mod <= 14 ? 14 - mod : 30 - mod
-        m += Array<Word>(repeating: 0, count: const)
+        m += [Word](repeating: 0, count: const)
         m += toBase(length)
         return m.split(16)
     }
