@@ -22,6 +22,12 @@ extension Hashing {
     }
 }
 
+public enum HashAlgorithms {
+    case sha1
+    case sha256
+    case sha512
+}
+
 public struct Cryptography {
     private init() {}
     
@@ -53,4 +59,27 @@ public struct Cryptography {
         //print(key.map { String.hex(from: [$0]) }.split(4).map { $0.joined() })
     }
     
+    public static func hmac(key stringKey: String, message stringMsg: String, algorithm: HashAlgorithms) -> String {
+        switch algorithm {
+        case .sha1: return hmac(key: stringKey, message: stringMsg, algorithm: SHA1.self)
+        case .sha256: return hmac(key: stringKey, message: stringMsg, algorithm: SHA256.self)
+        case .sha512: return hmac(key: stringKey, message: stringMsg, algorithm: SHA512.self)
+        }
+    }
+    
+    public static func hash(_ msg: [Byte], algorithm: HashAlgorithms) -> [Byte] {
+        switch algorithm {
+        case .sha1:   return SHA1.hash(msg)
+        case .sha256: return SHA256.hash(msg)
+        case .sha512: return SHA512.hash(msg)
+        }
+    }
+    
+    public static func hash(_ msg: String, algorithm: HashAlgorithms) -> String {
+        switch algorithm {
+        case .sha1:   return SHA1.hash(msg)
+        case .sha256: return SHA256.hash(msg)
+        case .sha512: return SHA512.hash(msg)
+        }
+    }
 }
