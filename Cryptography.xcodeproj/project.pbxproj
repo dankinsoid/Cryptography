@@ -11,8 +11,9 @@
 		83CC4A1420B174660087AD1E /* CryptographyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CC4A1320B174660087AD1E /* CryptographyTests.swift */; };
 		83CC4A1620B174660087AD1E /* Cryptography.h in Headers */ = {isa = PBXBuildFile; fileRef = 83CC4A0820B174650087AD1E /* Cryptography.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		83CC4A2220B174830087AD1E /* Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CC4A1F20B174820087AD1E /* Additions.swift */; };
-		83CC4A2320B174830087AD1E /* HMAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CC4A2020B174830087AD1E /* HMAC.swift */; };
+		83CC4A2320B174830087AD1E /* Cryptography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CC4A2020B174830087AD1E /* Cryptography.swift */; };
 		83CC4A2420B174830087AD1E /* SHA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CC4A2120B174830087AD1E /* SHA.swift */; };
+		83EBD3B520CFEE3C00DC50C0 /* MD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EBD3B420CFEE3C00DC50C0 /* MD.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,8 +34,9 @@
 		83CC4A1320B174660087AD1E /* CryptographyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptographyTests.swift; sourceTree = "<group>"; };
 		83CC4A1520B174660087AD1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83CC4A1F20B174820087AD1E /* Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Additions.swift; sourceTree = "<group>"; };
-		83CC4A2020B174830087AD1E /* HMAC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMAC.swift; sourceTree = "<group>"; };
+		83CC4A2020B174830087AD1E /* Cryptography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cryptography.swift; sourceTree = "<group>"; };
 		83CC4A2120B174830087AD1E /* SHA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHA.swift; sourceTree = "<group>"; };
+		83EBD3B420CFEE3C00DC50C0 /* MD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MD.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,10 +80,11 @@
 			isa = PBXGroup;
 			children = (
 				83CC4A1F20B174820087AD1E /* Additions.swift */,
-				83CC4A2020B174830087AD1E /* HMAC.swift */,
+				83CC4A2020B174830087AD1E /* Cryptography.swift */,
 				83CC4A2120B174830087AD1E /* SHA.swift */,
 				83CC4A0820B174650087AD1E /* Cryptography.h */,
 				83CC4A0920B174660087AD1E /* Info.plist */,
+				83EBD3B420CFEE3C00DC50C0 /* MD.swift */,
 			);
 			path = Cryptography;
 			sourceTree = "<group>";
@@ -206,8 +209,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83EBD3B520CFEE3C00DC50C0 /* MD.swift in Sources */,
 				83CC4A2420B174830087AD1E /* SHA.swift in Sources */,
-				83CC4A2320B174830087AD1E /* HMAC.swift in Sources */,
+				83CC4A2320B174830087AD1E /* Cryptography.swift in Sources */,
 				83CC4A2220B174830087AD1E /* Additions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

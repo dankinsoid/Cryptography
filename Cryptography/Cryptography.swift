@@ -24,8 +24,12 @@ extension Hashing {
 
 public enum HashAlgorithms {
     case sha1
+    case sha224
     case sha256
     case sha512
+    case sha384
+    case sha512_224
+    case sha512_256
 }
 
 public struct Cryptography {
@@ -62,24 +66,40 @@ public struct Cryptography {
     public static func hmac(key stringKey: String, message stringMsg: String, algorithm: HashAlgorithms) -> String {
         switch algorithm {
         case .sha1: return hmac(key: stringKey, message: stringMsg, algorithm: SHA1.self)
+        case .sha224: return hmac(key: stringKey, message: stringMsg, algorithm: SHA224.self)
         case .sha256: return hmac(key: stringKey, message: stringMsg, algorithm: SHA256.self)
+        case .sha384: return hmac(key: stringKey, message: stringMsg, algorithm: SHA384.self)
         case .sha512: return hmac(key: stringKey, message: stringMsg, algorithm: SHA512.self)
+        case .sha512_256: return hmac(key: stringKey, message: stringMsg, algorithm: SHA512_256.self)
+        case .sha512_224: return hmac(key: stringKey, message: stringMsg, algorithm: SHA512_224.self)
         }
+    }
+    
+    public static func hash<T: Hashing>(_ msg: [Byte], algorithm: T.Type) -> [Byte] {
+        return T.hash(msg)
     }
     
     public static func hash(_ msg: [Byte], algorithm: HashAlgorithms) -> [Byte] {
         switch algorithm {
         case .sha1:   return SHA1.hash(msg)
+        case .sha224: return SHA224.hash(msg)
         case .sha256: return SHA256.hash(msg)
+        case .sha384: return SHA384.hash(msg)
         case .sha512: return SHA512.hash(msg)
+        case .sha512_256: return SHA512_256.hash(msg)
+        case .sha512_224: return SHA512_224.hash(msg)
         }
     }
     
     public static func hash(_ msg: String, algorithm: HashAlgorithms) -> String {
         switch algorithm {
         case .sha1:   return SHA1.hash(msg)
+        case .sha224: return SHA224.hash(msg)
         case .sha256: return SHA256.hash(msg)
+        case .sha384: return SHA384.hash(msg)
         case .sha512: return SHA512.hash(msg)
+        case .sha512_256: return SHA512_256.hash(msg)
+        case .sha512_224: return SHA512_224.hash(msg)
         }
     }
 }

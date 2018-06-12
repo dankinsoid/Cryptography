@@ -157,6 +157,7 @@ public class SHA256: SHA2 {
     public static let blockSize: Int = 64
     
     private init() {}
+    
     //эти значения представляют собой первые 32 бита дробных частей квадратного корня простых чисел – порядковые номера чисел: первые 8
     public static let origin: [UInt32] = [0x6A09E667, 0xBB67AE85, 0x3C6EF372, 0xA54FF53A, 0x510E527F, 0x9B05688C, 0x1F83D9AB, 0x5BE0CD19]
     
@@ -179,7 +180,20 @@ public class SHA512: SHA2 {
     public static let iterationsCount: Int = 80
     public static let blockSize: Int = 128
     
-    private init() {}
+    private let origins: [UInt64]
+    private var t: Int = 0
+    
+    private init() {
+        t = 0
+        origins = []
+    }
+    
+    init(_ t: Int) {
+        self.t = t
+        let h = SHA512.origin | [UInt64](repeating: 0xA5A5A5A5A5A5A5A5, count: 8)
+        origins = SHA512.hash(Array("SHA-512/\(t)".utf8), origin: h)
+    }
+    
     //эти значения представляют собой первые 64 бита дробных частей квадратного корня простых чисел – порядковые номера чисел: первые 8
     public static let origin: [UInt64] = [0x6a09e667f3bcc908, 0xbb67ae8584caa73b, 0x3c6ef372fe94f82b, 0xa54ff53a5f1d36f1, 0x510e527fade682d1, 0x9b05688c2b3e6c1f, 0x1f83d9abfb41bd6b, 0x5be0cd19137e2179]
     
@@ -213,6 +227,28 @@ public class SHA512: SHA2 {
     public static func sigma1(_ x: UInt64) -> UInt64 { return (x >>> 14) ^ (x >>> 18) ^ (x >>> 41) }
     public static func delta0(_ x: UInt64) -> UInt64 { return (x >>> 1) ^ (x >>> 8) ^ (x >> 7) }
     public static func delta1(_ x: UInt64) -> UInt64 { return (x >>> 19) ^ (x >>> 61) ^ (x >> 6) }
+    
+    private static func hash(_ msg: [Byte], origin: [UInt64]) -> [UInt64] {
+        var splited = prepare(msg)
+        var h: [Word] = origin
+        for j in 0..<splited.count {
+            splited[j] = fill(block: splited[j])
+            var h1 = mainIteration(constants: h, words: splited[j])
+            for i in 0..<h.count { h[i] = h[i] &+ h1[i] }
+        }
+        return h
+    }
+    
+    public func hash(_ msg: [Byte]) -> [Byte] {
+        var splited = SHA512.prepare(msg)
+        var h: [Word] = origins
+        for j in 0..<splited.count {
+            splited[j] = SHA512.fill(block: splited[j])
+            var h1 = SHA512.mainIteration(constants: h, words: splited[j])
+            for i in 0..<h.count { h[i] = h[i] &+ h1[i] }
+        }
+        return Array(h.toBytes().prefix(t / 8))
+    }
 }
 
 public class SHA384: SHA512 {
